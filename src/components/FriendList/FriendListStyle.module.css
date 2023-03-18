@@ -1,0 +1,31 @@
+.item{
+    display: flex;
+    align-items: center;
+    background-color: azure;
+    padding: 15px 15px;
+    border: 1px solid lightgrey;
+    gap:10px;
+    box-shadow: 5px 2px 15px -2px #000000;
+}
+
+.status{
+    background-color: green;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.friend-list{display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    min-width: 300px;
+    gap: 8px;
+}
+.name {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.notOnline{
+    composes:status;
+    background-color: red;
+}
