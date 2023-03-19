@@ -1,15 +1,7 @@
 import PropTypes from 'prop-types';
 import style from './ProfileStyle.module.css';
 
-export const Profile = ({
-  user: {
-    username,
-    tag,
-    location,
-    avatar,
-    stats: { followers, views, likes },
-  },
-}) => {
+export const Profile = ({ username, tag, location, avatar, stats }) => {
   return (
     <div>
       <div className={style.description}>
@@ -21,15 +13,15 @@ export const Profile = ({
       <ul className={style['stats-list']}>
         <li className={style.item}>
           <span className={style['stats-text']}>Followers</span>
-          <span className={style['stats-quantity']}>{followers}</span>
+          <span className={style['stats-quantity']}>{stats.followers}</span>
         </li>
         <li className={style.item}>
           <span className={style['stats-text']}>Views</span>
-          <span className={style['stats-quantity']}>{views}</span>
+          <span className={style['stats-quantity']}>{stats.views}</span>
         </li>
         <li className={style.item}>
           <span className={style['stats-text']}>Likes</span>
-          <span className={style['stats-quantity']}>{likes}</span>
+          <span className={style['stats-quantity']}>{stats.likes}</span>
         </li>
       </ul>
     </div>
@@ -37,13 +29,13 @@ export const Profile = ({
 };
 
 Profile.propTypes = {
-  profile: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    tag: PropTypes.string,
-    avatar: PropTypes.string,
-    location: PropTypes.string,
-    Views: PropTypes.number,
-    Followers: PropTypes.number,
-    Likes: PropTypes.number,
-  }),
-};
+  username: PropTypes.string,
+  tag: PropTypes.string,
+  location: PropTypes.string,
+  avatar: PropTypes.string,
+  stats: PropTypes.shape({
+    followers: PropTypes.number,
+    views: PropTypes.number,
+    likes: PropTypes.number,
+  }).isRequired,
+}.isRequired;

@@ -1,4 +1,4 @@
-import PropTypes, { arrayOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './Transactions.module.css';
 export const Transaction = ({ transaction }) => {
   return (
@@ -12,11 +12,11 @@ export const Transaction = ({ transaction }) => {
           </tr>
         </thead>
         <tbody>
-          {transaction.map(transaction => (
-            <tr key={transaction.id}>
-              <td>{transaction.type}</td>
-              <td>{transaction.amount}</td>
-              <td>{transaction.currency}</td>
+          {transaction.map(({ id, amount, currency, type }) => (
+            <tr key={id}>
+              <td>{type}</td>
+              <td>{amount}</td>
+              <td>{currency}</td>
             </tr>
           ))}
         </tbody>
@@ -26,12 +26,12 @@ export const Transaction = ({ transaction }) => {
 };
 
 Transaction.propTypes = {
-  transaction: arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string,
+  transaction: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
       type: PropTypes.string,
       amount: PropTypes.string,
       currency: PropTypes.string,
-    })
-  ),
+    }).isRequired
+  ).isRequired,
 };
